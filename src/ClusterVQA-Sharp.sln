@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11605.240 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClusterVQA-Sharp", "ClusterVQA-Sharp.csproj", "{EF7AA001-FB09-6D84-3060-0A4E1432E3AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF7AA001-FB09-6D84-3060-0A4E1432E3AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7AA001-FB09-6D84-3060-0A4E1432E3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7AA001-FB09-6D84-3060-0A4E1432E3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7AA001-FB09-6D84-3060-0A4E1432E3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADD4DFFE-13F3-4454-8F0C-8808636EE3AE}
+	EndGlobalSection
+EndGlobal
