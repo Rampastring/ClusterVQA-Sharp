@@ -23,15 +23,25 @@ Use `ffmpeg` to convert and downscale your video to a bunch of PNG files:
 
 Now you should have files `frames/frame0001.png`, `frames/frame0002.png` and so on. Then you can run the encoder:
 
-    ClusterVQA.exe ./frames output.vqa --fps 15 --blocks 3000
- 
+    ClusterVQA-Sharp.exe ./frames output.vqa --fps 15 --blocks 3000
+
+## Options
+
+To view all command-line options, run
+
+    ClusterVQA-Sharp.exe --help
+
 ## Sound
 
 Only PCM audio is supported. Convert your soundtrack beforehand:
 
-    ffmpeg video.mp4 -f s16le -c:a pcm_s16le -ar 44100 audio.raw
+    ffmpeg video.mp4 -f s16le -c:a pcm_s16le -ar 22050 audio.raw
 
-Then use it with `--audio audio.raw` and `-ar 44100` command line arguments.
+Then use it with `--audio audio.raw` and `-ar 22050` command line arguments.
+
+By default, ClusterVQA-Sharp encodes audio as mono. You can use the `--stereo` command line argument to encode audio as stereo. This is unlike the original ClusterVQA, which always encoded audio as stereo.
+
+Make sure your raw input file has the same channel count and sample rate as you want ClusterVQA to output - ClusterVQA does not perform any conversion between the aidio formats, but rather applies the audio data as-is to the output VQA.
 
 ## Gotchas
 
