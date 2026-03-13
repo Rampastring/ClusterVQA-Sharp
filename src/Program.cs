@@ -19,6 +19,7 @@ blockSizeOption.FromAmong("4x4", "4x2");
 
 var audioOption = new Option<string?>("--audio", "Soundtrack in raw pcm_s16le format");
 var audioRateOption = new Option<int>("--audiorate", () => 44100, "Audio sampling rate in Hz");
+var stereoOption = new Option<bool>("--stereo", () => defaultCfg.StereoAudio, "Encode audio as stereo.");
 audioRateOption.AddAlias("-ar");
 
 var minKfOption = new Option<int>("--min-keyframe-distance", () => defaultCfg.MinKeyframeDistance,
@@ -41,7 +42,7 @@ var rootCommand = new RootCommand("ClusterVQA - Encode VQA videos for C&C: Tiber
 {
     frameDirArg, outputArg,
     fpsOption, blocksOption, blockSizeOption,
-    audioOption, audioRateOption,
+    audioOption, audioRateOption, stereoOption,
     minKfOption, maxKfOption,
     blockErrOption, sceneCutOption,
     ditherOption, maxVecOption,
@@ -59,6 +60,7 @@ rootCommand.SetHandler((context) =>
     string blockSize = result.GetValueForOption(blockSizeOption) ?? "4x4";
     string? audioPath = result.GetValueForOption(audioOption);
     int audioRate = result.GetValueForOption(audioRateOption);
+    bool stereo = result.GetValueForOption(stereoOption);
     int minKf = result.GetValueForOption(minKfOption);
     int maxKf = result.GetValueForOption(maxKfOption);
     double blockErr = result.GetValueForOption(blockErrOption);
@@ -94,7 +96,7 @@ rootCommand.SetHandler((context) =>
     AudioTrack? track = null;
     if (audioPath != null)
     {
-        track = RawS16LETrack.LoadFromFile(audioPath, audioRate, isStereo: true);
+        track = RawS16LETrack.LoadFromFile(audioPath, audioRate, stereo);
         Console.WriteLine($"Loaded audio {audioPath}: {track.Rate} Hz, Channels: {track.NumChannels}, {track.BitsPerChannel} bps, {track.Length:F2} s");
     }
 

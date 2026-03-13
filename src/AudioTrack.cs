@@ -20,13 +20,15 @@ public class AudioTrack
 
 public class RawS16LETrack : AudioTrack
 {
-    public bool IsStereo { get; set; } = true;
+    public bool IsStereo { get; set; }
 
     public override int NumChannels => IsStereo ? 2 : 1;
     public override int BitsPerChannel => 16;
 
     public static RawS16LETrack LoadFromFile(string path, int rate, bool isStereo)
     {
+        Console.WriteLine($"Loading audio track. File name: {Path.GetFileName(path)}, rate: {rate}, stereo: {isStereo}");
+
         var track = new RawS16LETrack
         {
             Rate = rate,

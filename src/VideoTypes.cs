@@ -12,6 +12,7 @@ public class Config
     public double SceneCutErrorLimit { get; set; } = 3.0;
     public double BlockReplacementError { get; set; } = 2.0;
     public int MaxVectorsToFit { get; set; } = 200000;
+    public bool StereoAudio { get; set; } = false;
 
     public int VectorSize => BlockH * BlockW * 3;
 }
